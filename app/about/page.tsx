@@ -20,7 +20,10 @@ import {
   Lightbulb
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
+// import { metadataAz } from "../metadata.az";
+
+// export const metadata = metadataAz;
 
 export default function AboutPage() {
   const stats = [

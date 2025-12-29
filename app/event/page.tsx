@@ -27,6 +27,8 @@ import {
   CheckCircle
 } from "lucide-react";
 import { useState } from "react";
+import { metadataAz } from "../metadata.az";
+// export const metadata = metadataAz;
 
 export default function EventsPage() {
   const [activeFilter, setActiveFilter] = useState<string>("all");

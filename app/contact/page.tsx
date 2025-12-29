@@ -24,6 +24,9 @@ import {
   AlertCircle
 } from "lucide-react";
 import { useState } from "react";
+// import { metadataAz } from "../metadata.az";
+
+// export const metadata = metadataAz;
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({

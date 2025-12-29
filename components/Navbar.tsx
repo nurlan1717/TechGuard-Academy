@@ -84,7 +84,7 @@ export default function Navbar() {
                 transition={{ duration: 0.7, type: 'spring' }}
                 className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/10 group-hover:shadow-purple-500/30 bg-gradient-to-br from-purple-600/10 to-purple-400/10"
               >
-                <img src="TechGuard.jpeg" alt="TechGuard Logo" className="w-12 h-12 text-white rounded-xl" />
+                <img src="logo.png" alt="TechGuard Logo" className="w-12 h-12 text-white rounded-xl" />
               </motion.div>
               <div className="flex flex-col">
                 <span className="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-purple-600 to-purple-500 dark:from-purple-400 dark:to-purple-300 bg-clip-text text-transparent drop-shadow-md">
