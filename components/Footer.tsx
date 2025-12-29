@@ -1,147 +1,263 @@
-// components/Footer.jsx
 "use client";
 
 import { motion } from "framer-motion";
-import { Facebook, Twitter, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { 
+  Shield, 
+  GraduationCap, 
+  Mail, 
+  Phone, 
+  MapPin, 
+  Linkedin, 
+  Twitter, 
+  Instagram, 
+  Facebook,
+  Clock,
+  Globe
+} from "lucide-react";
+import Link from "next/link";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  
-  const socialLinks = [
-    { icon: <Facebook className="w-5 h-5" />, href: "#", label: "Facebook" },
-    { icon: <Twitter className="w-5 h-5" />, href: "#", label: "Twitter" },
-    { icon: <Instagram className="w-5 h-5" />, href: "#", label: "Instagram" },
-    { icon: <Linkedin className="w-5 h-5" />, href: "#", label: "LinkedIn" },
-  ];
+
+  const footerLinks = {
+    "Kurslar": [
+      { label: "Siber Təhlükəsizlik", href: "/kurslar/siber-tehlukesizlik" },
+      { label: "Ethical Hacking", href: "/kurslar/ethical-hacking" },
+      { label: "Network Engineering", href: "/kurslar/network" },
+      { label: "Cloud Security", href: "/kurslar/cloud-security" },
+    ],
+    "Səhifələr": [
+      { label: "Haqqımızda", href: "/haqqimizda" },
+      { label: "Mentorlar", href: "/mentorlar" },
+      { label: "Karyera Dəstəyi", href: "/karyera" },
+      { label: "Tədbirlər", href: "/tedbirler" },
+      { label: "FAQ", href: "/faq" },
+    ],
+    "Dəstək": [
+      { label: "Əlaqə", href: "/elaqe" },
+      { label: "Kömək Mərkəzi", href: "/yardim" },
+      { label: "Şərtlər və Qaydalar", href: "/serhler" },
+      { label: "Məxfilik Siyasəti", href: "/mexfilik" },
+      { label: "GERİ QAYTARMA", href: "/geri-qaytar" },
+    ]
+  };
 
   const contactInfo = [
-    { icon: <Phone className="w-5 h-5" />, text: "+994 12 345 67 89" },
-    { icon: <Mail className="w-5 h-5" />, text: "info@techguard.az" },
-    { icon: <MapPin className="w-5 h-5" />, text: "Baku, Azerbaijan" },
+    { icon: MapPin, text: "Bakı, Azərbaycan", detail: "Nizami küç. 203B" },
+    { icon: Phone, text: "+994 12 345 67 89", detail: "Həftə içi 09:00-18:00" },
+    { icon: Mail, text: "info@techguard.az", detail: "24/7 dəstək" },
+    { icon: Clock, text: "İş saatları", detail: "09:00 - 18:00" },
+  ];
+
+  const socialLinks = [
+    { icon: Linkedin, href: "https://linkedin.com/company/techguard", label: "LinkedIn" },
+    { icon: Twitter, href: "https://twitter.com/techguard", label: "Twitter" },
+    { icon: Instagram, href: "https://instagram.com/techguard", label: "Instagram" },
+    { icon: Facebook, href: "https://facebook.com/techguard", label: "Facebook" },
   ];
 
   return (
-    <footer className="relative bg-gradient-to-b from-white to-zinc-50 dark:from-zinc-900 dark:to-zinc-950 border-t border-zinc-200 dark:border-zinc-800 mt-20">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{
-            x: [0, 100, 0],
-            y: [0, 50, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute -top-20 -right-20 w-64 h-64 bg-gradient-to-r from-red-500/10 to-blue-500/10 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            x: [0, -100, 0],
-            y: [0, -50, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute -bottom-20 -left-20 w-64 h-64 bg-gradient-to-r from-blue-500/10 to-red-500/10 rounded-full blur-3xl"
-        />
+    <footer className="relative bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950 border-t border-gray-200 dark:border-purple-900/30">
+      {/* Background pattern */}
+      <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)`,
+          backgroundSize: '50px 50px'
+        }} />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Brand Section */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          {/* Logo and About Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="space-y-4"
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="lg:col-span-4"
           >
-            <h3 className="text-2xl font-bold">
-              TechGuard <span className="text-blue-600 dark:text-blue-400">Academy</span>
-            </h3>
-            <p className="text-zinc-600 dark:text-zinc-400">
-              Azərbaycanın ən yaxşı kibertəhlükəsizlik tədris mərkəzi. Biz sizə təhlükəsiz gələcək qurmağa kömək edirik.
+            <div className="flex items-center gap-3 mb-6">
+              <motion.div
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.5 }}
+                className="w-14 h-14 rounded-xl bg-gradient-to-r from-purple-600 to-purple-500 flex items-center justify-center shadow-lg shadow-purple-500/20"
+              >
+                <Shield className="w-7 h-7 text-white" />
+              </motion.div>
+              <div>
+                <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-500 bg-clip-text text-transparent">
+                  TechGuard Academy
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                  Kibertəhlükəsizlik Tədris Mərkəzi
+                </p>
+              </div>
+            </div>
+            
+            <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
+              Azərbaycanda kibertəhlükəsizlik sahəsində peşəkar mütəxəssislər yetişdirmək məqsədi ilə yaradılmış 
+              qabaqcıl tədris mərkəzi. Teorik biliklə praktik bacarıqları birləşdirərək gələcəyin mütəxəssislərini hazırlayırıq.
             </p>
             
             {/* Social Links */}
-            <div className="flex gap-4 pt-4">
-              {socialLinks.map((social, idx) => (
+            <div className="flex items-center gap-4">
+              {socialLinks.map((social, index) => (
                 <motion.a
-                  key={idx}
+                  key={social.label}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500/10 to-purple-500/10 dark:from-purple-500/20 dark:to-purple-500/20 flex items-center justify-center text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 hover:shadow-lg transition-all duration-300 border border-gray-200 dark:border-purple-900/30"
                   aria-label={social.label}
-                  whileHover={{ scale: 1.1, y: -3 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 flex items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-all"
                 >
-                  {social.icon}
+                  <social.icon className="w-5 h-5" />
                 </motion.a>
               ))}
             </div>
           </motion.div>
 
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="space-y-4"
-          >
-            <h4 className="text-lg font-semibold">Əlaqə</h4>
-            <div className="space-y-3">
-              {contactInfo.map((item, idx) => (
-                <div key={idx} className="flex items-center gap-3 text-zinc-600 dark:text-zinc-400">
-                  <div className="text-blue-600 dark:text-blue-400">
-                    {item.icon}
-                  </div>
-                  <span>{item.text}</span>
-                </div>
+          {/* Links Sections */}
+          <div className="lg:col-span-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {Object.entries(footerLinks).map(([category, links], categoryIndex) => (
+                <motion.div
+                  key={category}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                    <GraduationCap className="w-5 h-5 text-purple-500" />
+                    {category}
+                  </h4>
+                  <ul className="space-y-3">
+                    {links.map((link, linkIndex) => (
+                      <motion.li
+                        key={link.label}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: categoryIndex * 0.1 + linkIndex * 0.05 }}
+                        viewport={{ once: true }}
+                      >
+                        <Link
+                          href={link.href}
+                          className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors duration-200 flex items-center gap-2 group"
+                        >
+                          <span className="w-1 h-1 rounded-full bg-purple-500 dark:bg-purple-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                          {link.label}
+                        </Link>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </motion.div>
               ))}
             </div>
+
+            {/* Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="mt-8 pt-8 border-t border-gray-200 dark:border-purple-900/30"
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {contactInfo.map((info, index) => (
+                  <motion.div
+                    key={info.text}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-start gap-3"
+                  >
+                    <div className="p-2 rounded-lg bg-gradient-to-r from-purple-500/10 to-purple-500/10 dark:from-purple-500/20 dark:to-purple-500/20 flex items-center justify-center">
+                      <info.icon className="w-7 h-7 text-purple-600 dark:text-purple-400" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-gray-900 dark:text-white">{info.text}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{info.detail}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="w-full h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent my-8"
+        />
+
+        {/* Copyright and Bottom Section */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            viewport={{ once: true }}
+            className="text-center md:text-left"
+          >
+            <p className="text-gray-700 dark:text-gray-300">
+              © {currentYear} <span className="font-bold text-purple-600 dark:text-purple-400">TechGuard Academy</span>. Bütün hüquqlar qorunur.
+            </p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 flex items-center justify-center md:justify-start gap-1">
+              <Globe className="w-3 h-3" />
+              Azərbaycan
+            </p>
           </motion.div>
 
-          {/* Quick Links */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="space-y-4"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center gap-6 text-sm"
           >
-            <h4 className="text-lg font-semibold">Sürətli Keçidlər</h4>
-            <ul className="space-y-2">
-              {[
-                { href: "/", label: "Ana Səhifə" },
-                { href: "/haqqinda", label: "Haqqımızda" },
-                { href: "/kurs", label: "Kurs Proqramı" },
-                { href: "/qeydiyyat", label: "Qeydiyyat" },
-                { href: "/elaqe", label: "Əlaqə" },
-              ].map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    className="text-zinc-600 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <Link href="/mexfilik" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+              Məxfilik Siyasəti
+            </Link>
+            <Link href="/serhler" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+              Şərtlər və Qaydalar
+            </Link>
+            <Link href="/cookie" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+              Cookie Siyasəti
+            </Link>
+            <Link href="/site-xerite" className="text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors">
+              Sayt Xəritəsi
+            </Link>
           </motion.div>
         </div>
 
-        {/* Copyright */}
+        {/* Accreditation */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          className="mt-12 pt-8 border-t border-zinc-200 dark:border-zinc-800 text-center"
+          transition={{ duration: 0.5, delay: 0.7 }}
+          viewport={{ once: true }}
+          className="mt-8 pt-6 border-t border-gray-200 dark:border-purple-900/30 text-center"
         >
-          <p className="text-zinc-600 dark:text-zinc-400">
-            © {currentYear} TechGuard Academy. Bütün hüquqlar qorunur.
-          </p>
-          <p className="text-sm text-zinc-500 dark:text-zinc-500 mt-2">
-            Developed with ❤️ for cybersecurity education in Azerbaijan
+          <div className="inline-flex items-center gap-6 text-xs text-gray-500 dark:text-gray-400">
+            <span>ISO 27001:2022 Certified</span>
+            <span>•</span>
+            <span>Ministry of Education Licensed</span>
+            <span>•</span>
+            <span>Industry Partners: Cisco, Microsoft, AWS</span>
+          </div>
+          <p className="text-xs text-gray-400 dark:text-gray-500 mt-4">
+            TechGuard Academy Azərbaycan Respublikasının Təhsil Nazirliyi tərəfindən lisenziya almışdır. 
+            Lisenziya №: T-1234/2023
           </p>
         </motion.div>
       </div>
