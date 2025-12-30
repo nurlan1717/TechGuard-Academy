@@ -588,7 +588,7 @@ export default function BlueTeamCoursePage() {
                       </div>
                       <div className="flex items-center justify-between text-sm">
                         <span>6 aylıq ümumi:</span>
-                        <span className="font-bold text-gray-900 dark:text-white">540 AZN</span>
+                        <span className="font-bold text-gray-900 dark:text-white">600 AZN</span>
                       </div>
                     </div>
                     <div className="bg-gradient-to-r from-purple-500/10 to-blue-500/10 dark:from-purple-500/20 dark:to-blue-500/20 rounded-xl p-4">
