@@ -2,14 +2,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { 
-  Shield, 
-  Users, 
-  Target, 
-  BookOpen, 
-  Zap, 
-  Lock, 
-  Search, 
+import {
+  Shield,
+  Users,
+  Target,
+  BookOpen,
+  Zap,
+  Lock,
+  Search,
   AlertTriangle,
   Code,
   Network,
@@ -44,7 +44,7 @@ export default function BlueTeamCoursePage() {
         "Prevent → Detect → Respond → Recover yanaşması",
         "Alert-dən başlayıb report-la bitən SOC prosesi"
       ],
-      duration: "2 həftə",
+      duration: "1 həftə",
       level: "Başlanğıc",
       icon: <Users className="w-6 h-6" />
     },
@@ -74,7 +74,7 @@ export default function BlueTeamCoursePage() {
         "Normal və şübhəli davranışın fərqləndirilməsi",
         "Endpoint üzərindən çıxan network traffic-in analizi"
       ],
-      duration: "2 həftə",
+      duration: "5 həftə",
       level: "Orta",
       icon: <Activity className="w-6 h-6" />
     },
@@ -89,7 +89,7 @@ export default function BlueTeamCoursePage() {
         "Firewall, IDS/IPS və EDR loglarının oxunması",
         "Müxtəlif log-lar arasında əlaqə qurmaq"
       ],
-      duration: "3 həftə",
+      duration: "2 həftə",
       level: "Qabaqcıl",
       icon: <Database className="w-6 h-6" />
     },
@@ -105,7 +105,7 @@ export default function BlueTeamCoursePage() {
         "False Positive-lərin azaldılması",
         "MITRE ATT&CK ilə əlaqələndirmə"
       ],
-      duration: "4 həftə",
+      duration: "3 həftə",
       level: "Qabaqcıl",
       icon: <BarChart className="w-6 h-6" />
     },
@@ -132,7 +132,7 @@ export default function BlueTeamCoursePage() {
         "Layer 2–3 hücumların bu alətlərdə görünməsi",
         "Alert-lərin SIEM-ə ötürülmə prosesi"
       ],
-      duration: "2 həftə",
+      duration: "1 həftə",
       level: "Orta",
       icon: <AlertTriangle className="w-6 h-6" />
     },
@@ -162,7 +162,7 @@ export default function BlueTeamCoursePage() {
         "Web3, Blockchain və crypto risklərinə baxış",
         "Kriptoqrafiyanın SOC üçün praktik istifadəsi"
       ],
-      duration: "3 həftə",
+      duration: "2 həftə",
       level: "Qabaqcıl",
       icon: <Code className="w-6 h-6" />
     },
@@ -176,7 +176,7 @@ export default function BlueTeamCoursePage() {
         "Shuffle və Suricata üzərindən nümunələr",
         "Incident Response playbook-lar"
       ],
-      duration: "2 həftə",
+      duration: "1 həftə",
       level: "Qabaqcıl",
       icon: <Zap className="w-6 h-6" />
     },
@@ -190,7 +190,7 @@ export default function BlueTeamCoursePage() {
         "Containment və recovery qərarları",
         "Texniki və idarəetmə üçün hesabatlar"
       ],
-      duration: "3 həftə",
+      duration: "1 həftə",
       level: "Expert",
       icon: <FileText className="w-6 h-6" />
     },
@@ -204,38 +204,201 @@ export default function BlueTeamCoursePage() {
         "Build → Protect → Detect → Respond yanaşması",
         "Beynəlxalq sertifikatlara hazırlıq"
       ],
-      duration: "4 həftə",
+      duration: "1 həftə",
       level: "Expert",
       icon: <Award className="w-6 h-6" />
     }
   ];
 
   const stats = [
-    { icon: <Calendar className="w-6 h-6" />, value: "28 Həftə", label: "Tədris Müddəti" },
+    { icon: <Calendar className="w-6 h-6" />, value: "24 Həftə", label: "Tədris Müddəti" },
     { icon: <BookOpen className="w-6 h-6" />, value: "12 Modul", label: "Hərtərəfli Tədris" },
-    { icon: <Award className="w-6 h-6" />, value: "3 Sertifikat", label: "Rəsmi Sənəd" },
-    { icon: <Users className="w-6 h-6" />, value: "100%", label: "İşə Düzəlmə" },
+    { icon: <Award className="w-6 h-6" />, value: "Sertifikat", label: "Rəsmi Sənəd" },
+    { icon: <Users className="w-6 h-6" />, value: "100%", label: "Referans" },
   ];
 
-  const toolsTechnologies = [
-    { name: "Splunk", category: "SIEM", description: "Real-time monitoring və log management" },
-    { name: "QRadar", category: "SIEM", description: "IBM security intelligence platform" },
-    { name: "ELK Stack", category: "SIEM", description: "Open-source log analytics" },
-    { name: "Wazuh", category: "SIEM", description: "Open-source security monitoring" },
-    { name: "Cortex XDR", category: "EDR/XDR", description: "Endpoint detection and response" },
-    { name: "CrowdStrike", category: "EDR", description: "Next-gen antivirus platform" },
+  type ToolTechnology = {
+    name: string;
+    category: string;
+    description: string;
+  };
+
+  const toolsTechnologies: ToolTechnology[] = [
+    { name: "Splunk", category: "SIEM", description: "Real-time log analizi və alerting" },
+    { name: "IBM QRadar", category: "SIEM", description: "Event korelyasiyası və risk əsaslı analiz" },
+    { name: "ELK Stack", category: "SIEM", description: "Open-source log analitika" },
+    { name: "Wazuh", category: "SIEM", description: "Host-based security monitoring və SIEM" },
+    // Log & Monitoring
+    { name: "Syslog / Rsyslog", category: "Log & Monitoring", description: "Linux sistemlərində log toplama və yönləndirmə" },
+    { name: "Winlogbeat / Filebeat", category: "Log & Monitoring", description: "Windows və Linux üçün agent əsaslı log toplama" },
+    { name: "OSSEC", category: "Log & Monitoring", description: "Host-based intrusion detection və log monitoring" },
+    // Vulnerability & Exposure Management
+    { name: "Nessus", category: "Vulnerability & Exposure Management", description: "Vulnerability scanning və zəiflik aşkarlanması" },
+    { name: "OpenVAS", category: "Vulnerability & Exposure Management", description: "Open-source zəiflik skanı" },
+    { name: "Qualys", category: "Vulnerability & Exposure Management", description: "Cloud əsaslı vulnerability management" },
+    // Incident Response & Forensics
+    { name: "TheHive", category: "Incident Response & Forensics", description: "Incident management və koordinasiya" },
+    { name: "Velociraptor", category: "Incident Response & Forensics", description: "Endpoint forensics və təhqiqat" },
+    { name: "Autopsy / FTK", category: "Incident Response & Forensics", description: "Disk və fayl forensikası və analizi" },
+    // Firewall & Network Security
+    { name: "Palo Alto Firewall", category: "Network Security", description: "Enterprise səviyyəli firewall və təhlükəsizlik" },
+    { name: "FortiGate", category: "Network Security", description: "Network firewall və təhlükəsizlik platforması" },
+    { name: "pfSense", category: "Network Security", description: "Open-source firewall və yönləndirmə həlli" },
+    // EDR/XDR, Threat Intel, IDS/IPS, SOAR (mövcudlar)
+    { name: "Cortex XDR", category: "EDR/XDR", description: "Endpoint + network + cloud analiz" },
+    { name: "SentinelOne", category: "EDR/XDR", description: "Behavior-based EDR" },
+    { name: "Microsoft Defender for Endpoint / XDR", category: "EDR/XDR", description: "Endpoint və identity qorunması" },
+    { name: "CrowdStrike", category: "EDR", description: "Endpoint threat detection" },
     { name: "FireEye", category: "Threat Intel", description: "Advanced threat detection" },
-    { name: "MISP", category: "Threat Intel", description: "Open-source threat sharing" },
-    { name: "Shuffle", category: "SOAR", description: "Security orchestration platform" },
+    { name: "MISP", category: "Threat Intel", description: "IOC paylaşımı və threat data idarəsi" },
+    { name: "VirusTotal", category: "Threat Intel", description: "Malware və hash analizləri" },
+    { name: "AlienVault OTX", category: "Threat Intel", description: "Community threat feed" },
     { name: "Suricata", category: "IDS/IPS", description: "Network threat detection" },
+    { name: "Snort", category: "IDS/IPS", description: "Signature-based IDS/IPS" },
+    { name: "Zeek (Bro)", category: "IDS/IPS", description: "Network traffic analysis" },
+    { name: "Shuffle", category: "SOAR", description: "Open-source SOAR" },
+    { name: "Cortex XSOAR", category: "SOAR", description: "Incident response avtomatlaşdırması" },
+    { name: "Splunk SOAR", category: "SOAR", description: "Playbook əsaslı cavab mexanizmləri" },
   ];
+
+  const [toolsPage, setToolsPage] = useState(1);
+  const toolsPerPage = 9;
+  const totalToolsPages = Math.ceil(toolsTechnologies.length / toolsPerPage);
+  const paginatedTools = toolsTechnologies.slice((toolsPage - 1) * toolsPerPage, toolsPage * toolsPerPage);
 
   const careerPaths = [
-    { title: "Security Analyst", salary: "1500-2500 AZN", demand: "Yüksək" },
-    { title: "SOC Analyst", salary: "2000-3500 AZN", demand: "Çox Yüksək" },
-    { title: "Incident Responder", salary: "2500-4000 AZN", demand: "Yüksək" },
-    { title: "Threat Hunter", salary: "3000-5000 AZN", demand: "Orta" },
-    { title: "Security Engineer", salary: "3500-6000 AZN", demand: "Yüksək" },
+    {
+      title: "Security Analyst (Junior)",
+      salary: "900 – 1500 AZN",
+      demand: "Orta",
+      responsibilities: [
+        "SIEM üzərindən təhlükəsizlik bildirişlərinin izlənməsi",
+        "İlkin incident triage və false positive analizi",
+        "Sadə IOC yoxlamaları (IP, domain, hash)",
+        "Gündəlik təhlükəsizlik hesabatlarının hazırlanması",
+        "Hadisələrin yuxarı səviyyəyə eskalasiyası"
+      ]
+    },
+    {
+      title: "SOC Analyst (Junior–Mid)",
+      salary: "1200 – 2000 AZN",
+      demand: "Yüksək",
+      responsibilities: [
+        "SIEM və EDR alert-lərinin dərin texniki analizi",
+        "Sistem və şəbəkə loqlarının korelyasiyası",
+        "Endpoint səviyyəsində ilkin araşdırmalar",
+        "Incident-lərin təsnifatı və prioritetləşdirilməsi",
+        "Threat Intelligence mənbələri ilə uyğunluğun yoxlanması"
+      ]
+    },
+    {
+      title: "Incident Responder (Mid)",
+      salary: "1800 – 2800 AZN",
+      demand: "Yüksək",
+      responsibilities: [
+        "Aktiv kibertəhlükəsizlik insidentlərinə operativ cavab",
+        "Yoluxmuş endpoint və hesabların izolasiya edilməsi",
+        "Hücumun yayılmasının qarşısının alınması",
+        "Cavab addımlarının sənədləşdirilməsi",
+        "Texniki post-incident hesabatların hazırlanması"
+      ]
+    },
+    {
+      title: "Threat Hunter (Mid)",
+      salary: "2200 – 3500 AZN",
+      demand: "Yüksək",
+      responsibilities: [
+        "Proaktiv şəkildə gizli hücumların aşkarlanması",
+        "SIEM/EDR üzərində hypothesis-based hunting",
+        "MITRE ATT&CK texnikaları ilə analiz",
+        "Detection qaydalarının təkmilləşdirilməsi",
+        "Hunting nəticələrinin sənədləşdirilməsi"
+      ]
+    },
+    {
+      title: "Senior SOC Analyst",
+      salary: "2000 – 3000 AZN",
+      demand: "Yüksək",
+      responsibilities: [
+        "Mürəkkəb insidentlərin rəhbər analizi",
+        "Eskalasiya qərarlarının verilməsi",
+        "Junior analitiklərə texniki mentorluq",
+        "Alert tuning və rule optimallaşdırılması",
+        "SOC əməliyyatlarının keyfiyyətinə nəzarət"
+      ]
+    },
+    {
+      title: "Detection Engineer",
+      salary: "3000 – 5000 AZN",
+      demand: "Çox Yüksək",
+      responsibilities: [
+        "Detection logic və qaydaların yazılması (SIEM/XDR)",
+        "False positive-lərin azaldılması",
+        "MITRE ATT&CK əsaslı coverage qurulması",
+        "Purple Team əməkdaşlığı",
+        "SOC detection maturity-nin artırılması"
+      ]
+    },
+    {
+      title: "DFIR Specialist (Digital Forensics & Incident Response)",
+      salary: "2800 – 4500 AZN",
+      demand: "Çox Yüksək",
+      responsibilities: [
+        "Disk, memory və log forensikası",
+        "Hücumun kök səbəbinin müəyyən edilməsi",
+        "Texniki sübutların toplanması və saxlanması",
+        "Malware analizində Incident Response dəstəyi",
+        "Hücum ssenarilərinin sənədləşdirilməsi"
+      ]
+    },
+    {
+      title: "Security Engineer (Senior)",
+      salary: "3000 – 4500 AZN",
+      demand: "Çox Yüksək",
+      responsibilities: [
+        "SIEM, EDR, XDR və SOAR sistemlərinin qurulması",
+        "Log mənbələrinin inteqrasiyası",
+        "SOC infrastrukturunun texniki inkişafı",
+        "Avtomatlaşdırma və playbook-ların hazırlanması",
+        "Təhlükəsizlik sistemlərinin optimallaşdırılması"
+      ]
+    },
+    {
+      title: "SOC Team Lead / SOC Manager",
+      salary: "2500 – 4000 AZN",
+      demand: "Çox Yüksək",
+      responsibilities: [
+        "SOC komandasının idarə edilməsi",
+        "Növbə və resurs planlaması",
+        "Kritik insidentlərdə qərarverici rol",
+        "SOC proses və prosedurlarının formalaşdırılması",
+        "Management üçün hesabatların hazırlanması"
+      ]
+    },
+    {
+      title: "Blue Team Architect",
+      salary: "4000 – 6500 AZN",
+      demand: "Çox Yüksək",
+      responsibilities: [
+        "Enterprise təhlükəsizlik arxitekturasının dizaynı",
+        "SIEM/XDR/SOAR strategiyasının qurulması",
+        "Texnologiya və vendor seçimi",
+        "Təhlükəsizlik risklərinin texniki idarə olunması",
+        "SOC-un uzunmüddətli inkişaf planının hazırlanması"
+      ]
+    },
+    {
+      title: "CISO (Chief Information Security Officer)",
+      salary: "5000 – 8000+ AZN",
+      demand: "Çox Yüksək",
+      responsibilities: [
+        "Şirkətin ümumi informasiya təhlükəsizliyi strategiyası",
+        "Risk, compliance və audit proseslərinin idarəsi",
+        "Təhlükəsizlik büdcəsi və vendor münasibətləri",
+        "SOC və təhlükəsizlik komandalarına rəhbərlik",
+        "İdarə heyəti üçün strateji təhlükəsizlik hesabatları"
+      ]
+    }
   ];
 
   const activeModuleData = courseModules.find(module => module.id === activeModule) || courseModules[0];
@@ -284,17 +447,17 @@ export default function BlueTeamCoursePage() {
                   Kurs Haqqında
                 </h2>
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
-                  Blue Team Professional kursu sizi Security Operations Center (SOC) mühitində işləməyə hazırlayır. 
-                  Kurs boyu SIEM sistemləri, EDR/XDR platformaları, log analizi, incident response və threat hunting 
+                  Blue Team Professional kursu sizi Security Operations Center (SOC) mühitində işləməyə hazırlayır.
+                  Kurs boyu SIEM sistemləri, EDR/XDR platformaları, log analizi, incident response və threat hunting
                   kimi əsas müdafiə texnologiyalarını praktiki olaraq öyrənəcəksiniz.
                 </p>
-                
+
                 <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-500/20 dark:to-purple-500/20 border border-blue-500/20 dark:border-blue-500/30 rounded-2xl p-6 mb-6">
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
                     🎯 Yekun Nəticə
                   </h3>
                   <p className="text-gray-700 dark:text-gray-300">
-                    Bu sillabusdan keçən şəxs: System-i anlayır, Alert-i oxuyur, Hadisəni düzgün analiz edir, 
+                    Bu sillabusdan keçən şəxs: System-i anlayır, Alert-i oxuyur, Hadisəni düzgün analiz edir,
                     Panikasız qərar verir, Evidence ilə danışır.
                   </p>
                 </div>
@@ -324,27 +487,50 @@ export default function BlueTeamCoursePage() {
               {/* Tools & Technologies */}
               <div>
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                  Öyrənəcəyiniz Alətlər
+                  Öyrənəcəyiniz Toollar
                 </h3>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {toolsTechnologies.map((tool, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, delay: idx * 0.05 }}
-                      viewport={{ once: true }}
-                      className="bg-white/70 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200/50 dark:border-blue-900/30 rounded-xl p-4 hover:border-blue-500/50 dark:hover:border-blue-500/50 transition-all duration-300"
-                    >
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="font-medium text-gray-900 dark:text-white">{tool.name}</div>
-                        <span className="px-2 py-1 text-xs bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-500/20 dark:to-purple-500/20 text-blue-700 dark:text-blue-300 rounded">
-                          {tool.category}
-                        </span>
-                      </div>
-                      <p className="text-sm text-gray-600 dark:text-gray-400">{tool.description}</p>
-                    </motion.div>
-                  ))}
+                <div className="flex flex-col">
+                  {totalToolsPages > 1 && (
+                    <div className="flex justify-center items-center gap-2 mb-6 sticky top-0 z-10 backdrop-blur-sm py-2 rounded-xl">
+                      <button
+                        onClick={() => setToolsPage((p) => Math.max(1, p - 1))}
+                        disabled={toolsPage === 1}
+                        className={`px-3 py-1 cursor-pointer rounded-lg border text-sm font-medium transition-all duration-200 ${toolsPage === 1 ? 'bg-gray-200 dark:bg-gray-700 text-gray-400 cursor-not-allowed' : 'bg-white dark:bg-gray-800 text-blue-600 border-blue-200 dark:border-blue-700 hover:bg-blue-50 dark:hover:bg-blue-900/20'}`}
+                      >
+                        Əvvəlki
+                      </button>
+                      <span className="text-sm text-gray-700 dark:text-gray-300">
+                        Səhifə {toolsPage} / {totalToolsPages}
+                      </span>
+                      <button
+                        onClick={() => setToolsPage((p) => Math.min(totalToolsPages, p + 1))}
+                        disabled={toolsPage === totalToolsPages}
+                        className={`px-3 py-1 cursor-pointer rounded-lg border text-sm font-medium transition-all duration-200 ${toolsPage === totalToolsPages ? 'bg-gray-200 dark:bg-gray-700 text-gray-400 cursor-not-allowed' : 'bg-white dark:bg-gray-800 text-blue-600 border-blue-200 dark:border-blue-700 hover:bg-blue-50 dark:hover:bg-blue-900/20'}`}
+                      >
+                        Növbəti
+                      </button>
+                    </div>
+                  )}
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {paginatedTools.map((tool, idx) => (
+                      <motion.div
+                        key={idx + (toolsPage - 1) * toolsPerPage}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: idx * 0.05 }}
+                        viewport={{ once: true }}
+                        className="bg-white/70 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200/50 dark:border-blue-900/30 rounded-xl p-4 hover:border-blue-500/50 dark:hover:border-blue-500/50 transition-all duration-300"
+                      >
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="font-medium text-gray-900 dark:text-white">{tool.name}</div>
+                          <span className="px-2 ml-4 py-1 text-xs bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-500/20 dark:to-purple-500/20 text-blue-700 dark:text-blue-300 rounded capitalize">
+                            {tool.category.charAt(0).toUpperCase() + tool.category.slice(1).toLowerCase()}
+                          </span>
+                        </div>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">{tool.description}</p>
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -373,7 +559,7 @@ export default function BlueTeamCoursePage() {
                 <div className="space-y-4 mb-6">
                   <div className="flex items-center justify-between">
                     <span className="text-gray-600 dark:text-gray-400">Müddət</span>
-                    <span className="font-medium text-gray-900 dark:text-white">28 həftə</span>
+                    <span className="font-medium text-gray-900 dark:text-white">24 həftə</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-gray-600 dark:text-gray-400">Format</span>
@@ -381,49 +567,59 @@ export default function BlueTeamCoursePage() {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-gray-600 dark:text-gray-400">Növbəti qrup</span>
-                    <span className="font-medium text-gray-900 dark:text-white">15 Fevral</span>
+                    <span className="font-medium text-gray-900 dark:text-white">10 Fevral</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-gray-600 dark:text-gray-400">Yer</span>
-                    <span className="font-medium text-gray-900 dark:text-white">15/25</span>
+                    <span className="font-medium text-gray-900 dark:text-white">15</span>
                   </div>
                 </div>
 
                 <div className="text-center mb-6">
-                  <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
-                    2800 AZN
+                  <div className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                    Ödəniş Seçimləri
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
-                    Hissə-hissə ödəniş imkanı
+                  <div className="grid grid-cols-1 gap-3">
+                    <div className="bg-gradient-to-r from-blue-500/10 to-purple-500/10 dark:from-blue-500/20 dark:to-purple-500/20 rounded-xl p-4">
+                      <div className="font-semibold text-blue-700 dark:text-blue-300 mb-1">Online</div>
+                      <div className="flex items-center justify-between text-sm">
+                        <span>Aylıq:</span>
+                        <span className="font-bold text-gray-900 dark:text-white">100 AZN</span>
+                      </div>
+                      <div className="flex items-center justify-between text-sm">
+                        <span>6 aylıq ümumi:</span>
+                        <span className="font-bold text-gray-900 dark:text-white">540 AZN</span>
+                      </div>
+                    </div>
+                    <div className="bg-gradient-to-r from-purple-500/10 to-blue-500/10 dark:from-purple-500/20 dark:to-blue-500/20 rounded-xl p-4">
+                      <div className="font-semibold text-purple-700 dark:text-purple-300 mb-1">Offline</div>
+                      <div className="flex items-center justify-between text-sm">
+                        <span>Aylıq:</span>
+                        <span className="font-bold text-gray-900 dark:text-white">150 AZN</span>
+                      </div>
+                      <div className="flex items-center justify-between text-sm">
+                        <span>6 aylıq ümumi:</span>
+                        <span className="font-bold text-gray-900 dark:text-white">900 AZN</span>
+                      </div>
+                    </div>
+                    <div>
+                      <Link href="/contact">
+                        <motion.button
+                          whileHover={{ scale: 1.04 }}
+                          whileTap={{ scale: 0.97 }}
+                          className="w-full cursor-pointer flex items-center justify-center gap-2 px-0 py-0 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl shadow-md hover:shadow-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 text-base sm:text-lg h-12"
+                        >
+                          <span className="inline-block">İndi Qeydiyyatdan Keç</span>
+                        </motion.button>
+                      </Link>
+                    </div>
                   </div>
-                </div>
-
-                <div className="space-y-3">
-                  <Link href="/contact">
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl hover:shadow-[0_20px_50px_rgba(37,99,235,0.3)] transition-all duration-300"
-                    >
-                      Qeydiyyatdan Keç
-                    </motion.button>
-                  </Link>
-                  
-                  <Link href="/contact">
-                    <motion.button
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="w-full px-6 py-3 border-2 border-blue-500/30 dark:border-blue-500/50 text-blue-700 mt-2 dark:text-blue-300 font-bold rounded-xl hover:border-blue-500 hover:bg-blue-500/10 transition-all duration-300"
-                    >
-                      Məlumat Üçün Əlaqə
-                    </motion.button>
-                  </Link>
                 </div>
 
                 <div className="mt-6 pt-6 border-t border-gray-200 dark:border-blue-900/30">
                   <div className="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                     <Clock className="w-4 h-4" />
-                    Qeydiyyat 10 Fevraladək
+                    Qeydiyyat 30 Yanvara qədər açıqdır
                   </div>
                 </div>
               </div>
@@ -452,7 +648,7 @@ export default function BlueTeamCoursePage() {
               </span>
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              12 modul, 28 həftə. Hər modul real SOC mühitində tətbiq olunan praktiki biliklər əsasında qurulub.
+              12 modul, 24 həftə. Hər modul real SOC mühitində tətbiq olunan praktiki biliklər əsasında qurulub.
             </p>
           </motion.div>
 
@@ -464,18 +660,16 @@ export default function BlueTeamCoursePage() {
                   <button
                     key={module.id}
                     onClick={() => setActiveModule(module.id)}
-                    className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 ${
-                      activeModule === module.id
-                        ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
-                        : 'bg-gradient-to-r from-blue-500/5 to-purple-500/5 dark:from-blue-500/10 dark:to-purple-500/10 text-gray-700 dark:text-gray-300 hover:border-blue-500/50'
-                    } border border-transparent`}
+                    className={`w-full text-left px-4 py-3 rounded-xl transition-all duration-300 ${activeModule === module.id
+                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg'
+                      : 'bg-gradient-to-r from-blue-500/5 to-purple-500/5 dark:from-blue-500/10 dark:to-purple-500/10 text-gray-700 dark:text-gray-300 hover:border-blue-500/50'
+                      } border border-transparent`}
                   >
                     <div className="flex items-center gap-3">
-                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                        activeModule === module.id 
-                          ? 'bg-white/20' 
-                          : 'bg-gradient-to-r from-blue-500/10 to-purple-500/10'
-                      }`}>
+                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${activeModule === module.id
+                        ? 'bg-white/20'
+                        : 'bg-gradient-to-r from-blue-500/10 to-purple-500/10'
+                        }`}>
                         {module.icon}
                       </div>
                       <div className="flex-1">
@@ -598,20 +792,19 @@ export default function BlueTeamCoursePage() {
               >
                 <div className="bg-white/70 dark:bg-gray-800/50 backdrop-blur-sm border border-gray-200/50 dark:border-blue-900/30 rounded-2xl p-6 hover:border-blue-500/50 dark:hover:border-blue-500/50 transition-all duration-300 h-full">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                    <h3 className="text-xl w-3/5 font-bold text-gray-900 dark:text-white">
                       {career.title}
                     </h3>
-                    <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-                      career.demand === 'Çox Yüksək' 
-                        ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300'
-                        : career.demand === 'Yüksək'
+                    <span className={`px-2 py-1 text-xs font-medium rounded-full ${career.demand === 'Çox Yüksək'
+                      ? 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300'
+                      : career.demand === 'Yüksək'
                         ? 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300'
                         : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-300'
-                    }`}>
+                      }`}>
                       {career.demand}
                     </span>
                   </div>
-                  
+
                   <div className="mb-4">
                     <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                       {career.salary}
@@ -622,16 +815,10 @@ export default function BlueTeamCoursePage() {
                   </div>
 
                   <ul className="space-y-2">
-                    {[
-                      "SIEM/EDR monitoring",
-                      "Incident investigation",
-                      "Threat analysis",
-                      "Security reporting",
-                      "Team collaboration"
-                    ].map((skill, skillIdx) => (
-                      <li key={skillIdx} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                    {career.responsibilities && career.responsibilities.map((resp: string, respIdx: number) => (
+                      <li key={respIdx} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                         <CheckCircle className="w-4 h-4 text-green-500" />
-                        {skill}
+                        {resp}
                       </li>
                     ))}
                   </ul>
@@ -704,7 +891,7 @@ export default function BlueTeamCoursePage() {
             <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
               <GraduationCap className="w-10 h-10 text-white" />
             </div>
-            
+
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
                 SOC Mütəxəssisi
@@ -714,34 +901,34 @@ export default function BlueTeamCoursePage() {
                 Olmağa Hazırsınız?
               </span>
             </h2>
-            
+
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-              28 həftəlik intensiv təlimlə real SOC mühitində işləmək bacarıqları qazanın. 
+              28 həftəlik intensiv təlimlə real SOC mühitində işləmək bacarıqları qazanın.
               Növbəti qrupda məhdud sayda yer mövcuddur.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-3.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl hover:shadow-[0_20px_50px_rgba(37,99,235,0.3)] transition-all duration-300"
+                  className="px-8 py-3.5 cursor-pointer bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold rounded-xl hover:shadow-[0_20px_50px_rgba(37,99,235,0.3)] transition-all duration-300"
                 >
                   İndi Qeydiyyatdan Keç
                 </motion.button>
               </Link>
-              
+
               <Link href="/contact">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-8 py-3.5 border-2 border-blue-500/30 dark:border-blue-500/50 text-blue-700 dark:text-blue-300 font-bold rounded-xl hover:border-blue-500 hover:bg-blue-500/10 transition-all duration-300"
+                  className="px-8 py-3.5 cursor-pointer border-2 border-blue-500/30 dark:border-blue-500/50 text-blue-700 dark:text-blue-300 font-bold rounded-xl hover:border-blue-500 hover:bg-blue-500/10 transition-all duration-300"
                 >
                   Pulsuz Konsultasiya
                 </motion.button>
               </Link>
             </div>
-            
+
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-6">
               * 24 saat ərzində sizinlə əlaqə saxlayacağıq
             </p>
