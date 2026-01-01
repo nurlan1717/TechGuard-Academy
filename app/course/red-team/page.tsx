@@ -50,7 +50,7 @@ export default function RedTeamCoursePage() {
         "Legal və ethical çərçivə (Rules of Engagement)",
         "Recon → Initial Access → Exploitation → Persistence → Lateral Movement → Impact"
       ],
-      duration: "2 həftə",
+      duration: "1 həftə",
       level: "Başlanğıc",
       icon: <Target className="w-6 h-6" />
     },
@@ -72,6 +72,22 @@ export default function RedTeamCoursePage() {
     },
     {
       id: 3,
+      title: "Network Essentials",
+      description: "Bu modul şəbəkə əsaslarını və network protokollarının hücumçu baxışını öyrədir.",
+      topics: [
+        "OSI və TCP/IP modeli",
+        "Network protokolları (TCP, UDP, HTTP, HTTPS, DNS)",
+        "Subnetting və network addressing",
+        "Routing və switching əsasları",
+        "Network reconnaissance texnikaları",
+        "Packet analysis və network traffic"
+      ],
+      duration: "3 həftə",
+      level: "Orta",
+      icon: <Network className="w-6 h-6" />
+    },
+    {
+      id: 4,
       title: "Server Pentest",
       description: "Bu modul server mühitlərində zəif nöqtələrin tapılmasını öyrədir.",
       topics: [
@@ -87,7 +103,23 @@ export default function RedTeamCoursePage() {
       icon: <ServerCog className="w-6 h-6" />
     },
     {
-      id: 4,
+      id: 5,
+      title: "Network Pentest",
+      description: "Bu modul daxili şəbəkələrdə hücum ssenarilərini izah edir.",
+      topics: [
+        "Layer 2–3 hücum yanaşması",
+        "ARP Spoofing və MITM məntiqi",
+        "Internal network reconnaissance",
+        "Network segmentation bypass üsulları",
+        "Firewall evasion əsasları",
+        "Network-based attacks"
+      ],
+      duration: "2 həftə",
+      level: "Qabaqcıl",
+      icon: <Activity className="w-6 h-6" />
+    },
+    {
+      id: 6,
       title: "Web Pentest",
       description: "Bu modul web application hücumlarının arxasındakı məntiqi izah edir.",
       topics: [
@@ -96,14 +128,15 @@ export default function RedTeamCoursePage() {
         "OWASP Top 10 zəiflikləri",
         "XSS, SQLi və Command Injection məntiqi",
         "File upload və deserialization riskləri",
-        "API pentest-ə giriş"
+        "API pentest-ə giriş",
+        "Advanced web exploitation"
       ],
       duration: "4 həftə",
       level: "Qabaqcıl",
       icon: <Globe className="w-6 h-6" />
     },
     {
-      id: 5,
+      id: 7,
       title: "Active Directory (AD) Fundamentals",
       description: "Bu modul enterprise mühitlərin əsas hədəfi olan AD-ni izah edir.",
       topics: [
@@ -113,12 +146,12 @@ export default function RedTeamCoursePage() {
         "Kerberos və NTLM əsasları",
         "Zəif dizayn edilmiş AD mühitləri"
       ],
-      duration: "3 həftə",
+      duration: "2 həftə",
       level: "Qabaqcıl",
       icon: <Database className="w-6 h-6" />
     },
     {
-      id: 6,
+      id: 8,
       title: "Active Directory Pentest – Lateral Movement",
       description: "Bu modul Red Team bacarıqlarını real təhlükə səviyyəsinə çıxarır.",
       topics: [
@@ -129,27 +162,12 @@ export default function RedTeamCoursePage() {
         "Domain Admin-ə gedən attack chain",
         "Persistence və izlərin təmizlənməsi"
       ],
-      duration: "4 həftə",
+      duration: "3 həftə",
       level: "Expert",
       icon: <Network className="w-6 h-6" />
     },
     {
-      id: 7,
-      title: "Network Pentest – Network Attacks",
-      description: "Bu modul daxili şəbəkələrdə hücum ssenarilərini izah edir.",
-      topics: [
-        "Layer 2–3 hücum yanaşması",
-        "ARP Spoofing və MITM məntiqi",
-        "Internal network reconnaissance",
-        "Network segmentation bypass üsulları",
-        "Firewall evasion əsasları"
-      ],
-      duration: "3 həftə",
-      level: "Qabaqcıl",
-      icon: <Activity className="w-6 h-6" />
-    },
-    {
-      id: 8,
+      id: 9,
       title: "Exploitation Logic",
       description: "Bu modul exploit anlayışının dərin məntiqini formalaşdırır.",
       topics: [
@@ -159,24 +177,9 @@ export default function RedTeamCoursePage() {
         "CVE-lərin real həyatda dəyəri",
         "Manual exploitation yanaşması"
       ],
-      duration: "3 həftə",
+      duration: "1 həftə",
       level: "Qabaqcıl",
       icon: <Bug className="w-6 h-6" />
-    },
-    {
-      id: 9,
-      title: "Post‑Exploitation və Persistence",
-      description: "Bu modul sistem ələ keçirildikdən sonra görülən işləri izah edir.",
-      topics: [
-        "Data access və məlumatın dəyəri",
-        "Persistence üsullarının konsepti",
-        "Log izlərinin idarə edilməsi",
-        "Red Team OPSEC anlayışı",
-        "Detection-dan yayınma məntiqi"
-      ],
-      duration: "3 həftə",
-      level: "Expert",
-      icon: <Lock className="w-6 h-6" />
     },
     {
       id: 10,
@@ -188,48 +191,17 @@ export default function RedTeamCoursePage() {
         "Noisy və stealth hücumların fərqi",
         "Detection avoidance strategiyaları"
       ],
-      duration: "3 həftə",
+      duration: "1 həftə",
       level: "Expert",
       icon: <Shield className="w-6 h-6" />
-    },
-    {
-      id: 11,
-      title: "Reporting və Documentation",
-      description: "Bu modul tapılan zəifliklərin düzgün təqdim edilməsini öyrədir.",
-      topics: [
-        "Texniki tapıntıların sənədləşdirilməsi",
-        "Risk səviyyəsinin izahı",
-        "Business impact dili",
-        "Remediation tövsiyələri",
-        "Executive summary hazırlanması"
-      ],
-      duration: "2 həftə",
-      level: "Orta",
-      icon: <FileText className="w-6 h-6" />
-    },
-    {
-      id: 12,
-      title: "Final Red Team Simulation",
-      description: "Bu modul bütün biliklərin real ssenari üzərində tətbiqidir.",
-      topics: [
-        "Real Red Team ssenarisi",
-        "End‑to‑end attack chain",
-        "Infrastructure, application və AD üzərindən hücumlar",
-        "Blue Team detection nöqtələrinin analizi",
-        "Red Team əməliyyatının yekun qiymətləndirilməsi",
-        "Beynəlxalq sertifikatlara hazırlıq"
-      ],
-      duration: "3 həftə",
-      level: "Expert",
-      icon: <GraduationCap className="w-6 h-6" />
     }
   ];
 
   const stats = [
-    { icon: <Calendar className="w-6 h-6" />, value: "32 Həftə", label: "Tədris Müddəti" },
-    { icon: <BookOpen className="w-6 h-6" />, value: "11 Modul", label: "Hərtərəfli Tədris" },
-    { icon: <Award className="w-6 h-6" />, value: "4 Sertifikat", label: "Rəsmi Sənəd" },
-    { icon: <Users className="w-6 h-6" />, value: "95%", label: "İşə Düzəlmə" },
+    { icon: <Calendar className="w-6 h-6" />, value: "24 Həftə", label: "Tədris Müddəti" },
+    { icon: <BookOpen className="w-6 h-6" />, value: "10 Modul", label: "Hərtərəfli Tədris" },
+    { icon: <Award className="w-6 h-6" />, value: "Sertifikat", label: "Rəsmi Sənəd" },
+    { icon: <Users className="w-6 h-6" />, value: "100%", label: "Referans" },
   ];
 
   const toolsTechnologies = [
@@ -273,7 +245,7 @@ export default function RedTeamCoursePage() {
       <PageHeader
         title="Red Team Professional"
         subtitle="OFFENSIVE SECURITY"
-        description="Real penetration testing, Active Directory exploitation, Web app security və Red Team operations. Hücum tərəfində peşəkar karyera."
+        description="Real penetration testing, Web app security və Red Team operations, Active Directory exploitation. Hücum tərəfində peşəkar karyera."
         icon={<Target className="w-4 h-4" />}
       />
 
@@ -312,9 +284,10 @@ export default function RedTeamCoursePage() {
                 </h2>
                 <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
                   Red Team Professional kursu sizi real dünya penetration testing və adversary simulation 
-                  əməliyyatlarına hazırlayır. Kurs boyu Active Directory exploitation, web app security, 
-                  network pentesting və advanced persistence techniques kimi əsas hücum texnikalarını 
-                  praktiki olaraq öyrənəcəksiniz.
+                  əməliyyatlarına hazırlayır. Kurs ərzində ilk olaraq network pentesting və web application security 
+                  əsasları öyrədilir, daha sonra Active Directory exploitation texnikalarına keçid edilir. 
+                  Təlimin son mərhələsində isə advanced persistence techniques kimi qabaqcıl hücum üsulları 
+                  praktiki tapşırıqlar üzərindən mənimsədilir.
                 </p>
                 
                 <div className="bg-gradient-to-r from-red-500/10 to-orange-500/10 dark:from-red-500/20 dark:to-orange-500/20 border border-red-500/20 dark:border-red-500/30 rounded-2xl p-6 mb-6">
@@ -401,7 +374,7 @@ export default function RedTeamCoursePage() {
                 <div className="space-y-4 mb-6">
                   <div className="flex items-center justify-between">
                     <span className="text-gray-600 dark:text-gray-400">Müddət</span>
-                    <span className="font-medium text-gray-900 dark:text-white">32 həftə</span>
+                    <span className="font-medium text-gray-900 dark:text-white">24 həftə</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-gray-600 dark:text-gray-400">Format</span>
@@ -480,7 +453,7 @@ export default function RedTeamCoursePage() {
               </span>
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              11 modul, 32 həftə. Hər modul real dünya penetration testing ssenariləri əsasında qurulub.
+              10 modul, 24 həftə. Hər modul real dünya penetration testing ssenariləri əsasında qurulub.
             </p>
           </motion.div>
 
@@ -744,7 +717,7 @@ export default function RedTeamCoursePage() {
             </h2>
             
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-              32 həftəlik intensiv təlimlə real dünya penetration testing bacarıqları qazanın. 
+              24 həftəlik intensiv təlimlə real dünya penetration testing bacarıqları qazanın. 
               Növbəti qrupda cəmi 10 yer mövcuddur.
             </p>
             

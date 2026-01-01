@@ -2,16 +2,14 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import ThemeToggle from "./ThemeToggle";
+import { useTheme } from '@/components/ThemeProvider'; // Öz ThemeProvider-inizdən import edin
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Shield, GraduationCap, ChevronDown, Users, Briefcase, Calendar, Phone, Mail } from "lucide-react";
+import { Menu, X, Shield, GraduationCap, ChevronDown, Calendar, Phone, Mail, Moon, Sun } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 // Azərbaycan dilində nav linkləri
 const navLinks = [
   { href: "/about", label: "Haqqımızda", icon: Shield },
-  // { href: "/education", label: "Tədris Proqramı", icon: GraduationCap },
-  // { href: "/mentorlar", label: "Mentorlar", icon: Users },
-  // { href: "/career", label: "Karyera Dəstəyi", icon: Briefcase },
   { href: "/event", label: "Tədbirlər", icon: Calendar },
   { href: "/contact", label: "Əlaqə", icon: Phone },
 ];
@@ -20,54 +18,58 @@ const navLinks = [
 const courses = [
   { href: "/course/red-team", label: "Red Team" },
   { href: "/course/blue-team", label: "Blue Team" },
-  // { href: "/kurslar/ethical-hacking", label: "Ethical Hacking" },
-  // { href: "/kurslar/cloud-security", label: "Cloud Security" },
-  // { href: "/kurslar/digital-forensic", label: "Digital Forensic" },
-  // { href: "/kurslar/cyber-law", label: "Kiber Hüquq" },
 ];
+
+// Tema dəyişdirici komponenti
+
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [coursesOpen, setCoursesOpen] = useState(false);
   const [mobileCoursesOpen, setMobileCoursesOpen] = useState(false);
+  const { theme } = useTheme(); // theme-i alın
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
-    setMobileOpen(false);
-    if (href.startsWith('#')) {
-      const element = document.getElementById(href.substring(1));
-      if (element) {
-        const offset = 80; // Navbar yüksəkliyi
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
-    }
-  };
+  if (!mounted) {
+    return (
+      <nav className="w-full fixed top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Placeholder logo */}
+            <div className="flex-shrink-0">
+              <div className="flex items-center space-x-3">
+                <div className="w-14 h-14 rounded-2xl bg-gray-200 dark:bg-gray-700 animate-pulse"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    );
+  }
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`w-full fixed top-0 z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-white/90 dark:bg-gray-900/90 shadow-2xl backdrop-blur-xl border-b border-gray-200/70 dark:border-purple-900/60' 
-          : 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md'
-      }`}
+      className={`w-full fixed top-0 z-50 transition-all duration-300 ${scrolled
+        ? 'bg-white/90 dark:bg-gray-900/90 shadow-2xl backdrop-blur-xl border-b border-gray-200/70 dark:border-purple-900/60'
+        : 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md'
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -114,7 +116,7 @@ export default function Navbar() {
                 Kurslar
                 <ChevronDown className={`w-4 h-4 cursor-pointer transition-transform ${coursesOpen ? 'rotate-180' : ''}`} />
               </motion.button>
-              
+
               <AnimatePresence>
                 {coursesOpen && (
                   <motion.div
@@ -162,7 +164,7 @@ export default function Navbar() {
             })}
 
             {/* Tema dəyişdirici */}
-            <div className="ml-2 cursor-pointer">
+            <div className="ml-2">
               <ThemeToggle />
             </div>
 
@@ -185,7 +187,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Button & Theme Toggle */}
-          <div className="flex items-center gap-3 lg:hidden cursor-pointer">
+          <div className="flex items-center gap-3 lg:hidden">
             <ThemeToggle />
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -235,13 +237,13 @@ export default function Navbar() {
                   onClick={() => setMobileCoursesOpen(!mobileCoursesOpen)}
                   className="flex items-center justify-between w-full px-4 py-3 text-sm font-semibold rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
                 >
-                  <div className="flex items-center gap-2 cursor-pointer">
+                  <div className="flex items-center gap-2">
                     <GraduationCap className="w-4 h-4" />
                     Kurslar
                   </div>
-                  <ChevronDown className={`w-4 h-4 cursor-pointer transition-transform ${mobileCoursesOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 transition-transform ${mobileCoursesOpen ? 'rotate-180' : ''}`} />
                 </button>
-                
+
                 <AnimatePresence>
                   {mobileCoursesOpen && (
                     <motion.div
@@ -283,7 +285,7 @@ export default function Navbar() {
                   </motion.a>
                 );
               })}
-              
+
               {/* Mobile Qeydiyyat button */}
               <motion.a
                 initial={{ opacity: 0, x: -20 }}
@@ -322,5 +324,3 @@ export default function Navbar() {
     </motion.nav>
   );
 }
-
-// Mail ikonu için ekleme (import etmeyi unutmuşsunuz)
