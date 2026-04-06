@@ -241,7 +241,7 @@ export default function Footer() {
         </div>
 
         {/* Accreditation */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.7 }}
@@ -259,7 +259,7 @@ export default function Footer() {
             TechGuard Academy Azərbaycan Respublikasının Təhsil Nazirliyi tərəfindən lisenziya almışdır. 
             Lisenziya №: T-1234/2023
           </p>
-        </motion.div>
+        </motion.div> */}
       </div>
     </footer>
   );

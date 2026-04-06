@@ -63,16 +63,16 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
+      initial={{ y: -100, x: "-50%" }}
+      animate={{ y: 0, x: "-50%" }}
       transition={{ duration: 0.5 }}
-      className={`w-full fixed top-0 z-50 transition-all duration-300 ${scrolled
-        ? 'bg-white/90 dark:bg-gray-900/90 shadow-2xl backdrop-blur-xl border-b border-gray-200/70 dark:border-purple-900/60'
-        : 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md'
+      className={`fixed top-4 left-1/2 z-50 w-[95%] max-w-7xl transition-all duration-300 ${mobileOpen ? 'rounded-3xl' : 'rounded-full'} ${scrolled
+        ? 'bg-white/90 dark:bg-gray-900/90 shadow-2xl backdrop-blur-xl border border-gray-200/50 dark:border-purple-900/50 py-1'
+        : 'bg-white/60 dark:bg-gray-900/60 backdrop-blur-md border border-white/20 dark:border-white/10 py-2 shadow-lg shadow-black/5'
         }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="px-5 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-14">
           {/* Logo */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}

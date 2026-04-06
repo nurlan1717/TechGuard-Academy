@@ -64,9 +64,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider>
-          <Snowfall />
+          {/* <Snowfall /> */}
           <Navbar />
-          <main className="flex-1 w-full max-w-full mx-auto">{children}</main>
+          <main className="flex-1 w-full max-w-full mx-auto mt-5">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>
