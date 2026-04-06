@@ -28,7 +28,7 @@ import Link from "next/link";
 export default function AboutPage() {
   const stats = [
     { icon: <Users className="w-6 h-6" />, value: "1000+", label: "Məzun" },
-    { icon: <Award className="w-6 h-6" />, value: "97%", label: "İşə Düzəlmə" },
+    { icon: <Award className="w-6 h-6" />, value: "96%", label: "İşə Düzəlmə" },
     { icon: <Calendar className="w-6 h-6" />, value: "5+", label: "İllik Təcrübə" },
     { icon: <Trophy className="w-6 h-6" />, value: "20+", label: "Sənaye Tərəfdaş" },
   ];
